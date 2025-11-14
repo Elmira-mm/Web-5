@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fdfdfd;
+}
+
+/* === Основна сітка === */
+.container {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "sidebar-left main sidebar-right"
+        "extra main sidebar-right"
+        "footer footer sidebar-right";
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto 1fr auto;
+    gap: 10px;
+    padding: 10px;
+    min-width: 320px;
+}
+
+/* === Загальний стиль блоків === */
+.block {
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 6px;
+}
+
+/* === Окремі блоки === */
+.block1 {
+    grid-area: header;
+    background: #dbeafe;
+    position: relative;
+}
+
+.block2 {
+    grid-area: sidebar-left;
+    background: #fde68a;
+}
+
+.block3 {
+    grid-area: main;
+    background: #ffffff;
+}
+
+.block4 {
+    grid-area: sidebar-right;
+    background: #fde68a;
+}
+
+.block5 {
+    grid-area: extra;
+    background: #f0fdf4;
+}
+
+.block6 {
+    grid-area: footer;
+    background: #dbeafe;
+    text-align: center;
+}
+
+/* === Елементи всередині === */
+.homeDishImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* --- Навігація --- */
+nav ul {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d62828;
+}
+
+/* --- Галерея --- */
+.gallery-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.gallery-list li {
+    flex: 1;
+    min-width: 250px;
+}
+
+.gallery-list img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#photoOfTheMonth {
+    width: 180px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* --- Текстові елементи --- */
+.slogan {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1e40af;
+    font-style: italic;
+}
+
+.motto {
+    font-size: 16px;
+    font-weight: bold;
+    color: #334155;
+    margin-bottom: 10px;
+}
+
+/* === Адаптивність === */
+
+/* --- Mobile (до 767px) --- */
+@media (max-width: 767px) {
+    .container {
+        grid-template-areas:
+            "header"
+            "sidebar-left"
+            "main"
+            "extra"
+            "sidebar-right"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+     .block2 {
+    height: auto;
+  }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery-list img {
+        width: 90%;
+        height: auto;
+    }
+
+    .homeDishImg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .slogan {
+        position: static;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+    }
+}
+
+/* --- Tablet (768px до 1199px) --- */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        grid-template-areas:
+            "header header"
+            "sidebar-left main"
+            "extra sidebar-right"
+            "footer footer";
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+    }
+
+    .block4, .block5 {
+        align-self: stretch;
+    }
+
+    .gallery-list img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .slogan {
+        font-size:14px;
+    }
+}
+
+/* --- Desktop (1200px і більше) --- */
+@media (min-width: 1200px) {
+    .container {
+        display: grid;
+        grid-template-areas:
+            "header header header"
+            "sidebar-left main sidebar-right"
+            "extra main sidebar-right"
+            "footer footer sidebar-right";
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: auto 1fr 1fr auto;
+        gap: 10px;
+        padding: 10px;
+        min-width: 1200px;
+    }
+
+    .gallery-list img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .slogan {
+        font-size: 18px;
+    }
+}
